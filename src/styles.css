@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* @import 'tw-animate-css'; */
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+:root {
+  /* cores neutras */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8f9fc;
+  --color-neutral-100: #f1f3f9;
+  --color-neutral-200: #e1e6ef;
+  --color-neutral-300: #ced4da;
+  --color-neutral-400: #d4d4d4;
+  --color-neutral-500: #868e96;
+  --color-neutral-600: #3f444d;
+  --color-neutral-700: #2a2a2a;
+  --color-neutral-800: #23272f;
+
+  /* cores primárias */
+  --color-primary-100: #83a7d3;
+  --color-primary-200: #167fe1;
+  --color-primary-300: #1351b4;
+  --color-primary-400: #1351b4;
+
+  /* cores alertas de sucesso */
+  --color-success-100: #dbf1d3;
+  --color-success-200: #4d9834;
+  --color-success-300: #3b8522;
+  --color-success-400: #2f8711;
+
+  /* cores alertas de atenção */
+  --color-alerts-100: #fff9ea;
+  --color-alerts-200: #ffd15b;
+  --color-alerts-300: #ffc531;
+  --color-alerts-400: #febf1f;
+
+  /* cores alertas de erro */
+  --color-error-100: #fef1f2;
+  --color-error-200: #e02d3c;
+  --color-error-300: #ba2532;
+  --color-error-400: #981b25;
+}
+
+@theme inline {
+  --font-sans: "Inter", sans-serif;
+
+  --color-background: var(--color-neutral-0);
+
+  --color-neutral-white-1: var(--color-neutral-0);
+  --color-neutral-white-2: var(--color-neutral-50);
+  --color-neutral-white-3: var(--color-neutral-100);
+  --color-neutral-white-4: var(--color-neutral-200);
+
+  --color-neutral-gray-1: var(--color-neutral-300);
+  --color-neutral-gray-2: var(--color-neutral-400);
+  --color-neutral-gray-3: var(--color-neutral-500);
+  --color-neutral-gray-4: var(--color-neutral-600);
+
+  --color-neutral-black-1: var(--color-neutral-700);
+  --color-neutral-black-2: var(--color-neutral-800);
+
+  --color-blue-1: var(--color-primary-100);
+  --color-blue-2: var(--color-primary-200);
+  --color-blue-3: var(--color-primary-300);
+  --color-blue-4: var(--color-primary-400);
+
+  --color-green-1: var(--color-success-100);
+  --color-green-2: var(--color-success-200);
+  --color-green-3: var(--color-success-300);
+  --color-green-4: var(--color-success-400);
+
+  --color-yellow-1: var(--color-alerts-100);
+  --color-yellow-2: var(--color-alerts-200);
+  --color-yellow-3: var(--color-alerts-300);
+  --color-yellow-4: var(--color-alerts-400);
+
+  --color-red-1: var(--color-error-100);
+  --color-red-2: var(--color-error-200);
+  --color-red-3: var(--color-error-300);
+  --color-red-4: var(--color-error-400);
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root,
+  #app {
+    height: 100%;
+    width: 100%;
+    @apply bg-background;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply bg-background text-neutral-black-2 antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
