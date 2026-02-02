@@ -82,6 +82,7 @@ code {
   --color-red-2: var(--color-error-200);
   --color-red-3: var(--color-error-300);
   --color-red-4: var(--color-error-400);
+
 }
 
 @layer base {
