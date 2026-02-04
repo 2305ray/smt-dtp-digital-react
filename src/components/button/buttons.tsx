@@ -13,11 +13,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-2 border border-blue-4 bg-blue-3 hover:opacity-90 text-white",
+        default: "border-2 border border-blue-4 bg-blue-4 hover:opacity-90 text-white",
         outline:
-          "border border-2 border-blue-4 hover:bg-neutral-white-3  text-blue-3 ",
+          "border border-2 border-blue-4 hover:bg-neutral-white-3  text-blue-4 ",
         noneOutline:
-          " text-blue-3",
+          " text-blue-4",
       },
       shape: {
         roundedMedium: "rounded-md",

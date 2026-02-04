@@ -1,5 +1,7 @@
 import { Input } from "@/components/input/input";
 import { CheckCircle2, EyeIcon, User } from "lucide-react";
+import { Checkbox } from "../checkbox/checkbox";
+import { RadioGroup } from "../radioGroup/radioGroup";
 
 export function InputTest() {
   return (
@@ -32,6 +34,9 @@ export function InputTest() {
         placeholder="Digite sua senha"
         message="Campo inválido!"
       ></Input>
+
+      <p className="flex gap-1"><Checkbox /> Texto de teste</p>
+      <p className="flex gap-1"><RadioGroup defaultValue=""/> Texto de teste</p>
     </div>
   );
 }

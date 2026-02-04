@@ -23,8 +23,9 @@ code {
   /* cores primárias */
   --color-primary-100: #83a7d3;
   --color-primary-200: #167fe1;
-  --color-primary-300: #1351b4;
+  --color-primary-300: #2670e8;
   --color-primary-400: #1351b4;
+  --color-primary-500: #1351b4;
 
   /* cores alertas de sucesso */
   --color-success-100: #dbf1d3;
@@ -67,6 +68,7 @@ code {
   --color-blue-2: var(--color-primary-200);
   --color-blue-3: var(--color-primary-300);
   --color-blue-4: var(--color-primary-400);
+  --color-blue-5: var(--color-primary-500);
 
   --color-green-1: var(--color-success-100);
   --color-green-2: var(--color-success-200);
@@ -82,7 +84,6 @@ code {
   --color-red-2: var(--color-error-200);
   --color-red-3: var(--color-error-300);
   --color-red-4: var(--color-error-400);
-
 }
 
 @layer base {
