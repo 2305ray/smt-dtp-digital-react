@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { CircleXIcon } from "lucide-react";
 
-const inputVariants = cva(
-  "flex h-10 w-[360px] rounded-md border-2 bg-transparent pl-4 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-neutral-gray-4",
+const textareaVariants = cva(
+  "flex min-h-[126px] w-[360px] rounded-md border-2 bg-transparent px-3 py-2 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-neutral-gray-4",
   {
     variants: {
       state: {
@@ -20,58 +20,29 @@ const inputVariants = cva(
   }
 );
 
-export interface InputProps
+export interface TextareaProps
   extends
-    React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputVariants> {
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    VariantProps<typeof textareaVariants> {
   message?: string;
   messageClassName?: string;
   messageIcon?: React.ReactNode;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
-    {
-      className,
-      state,
-      message,
-      messageClassName,
-      messageIcon,
-      leftIcon,
-      rightIcon,
-      ...props
-    },
+    { className, state, message, messageClassName, messageIcon, ...props },
     ref
   ) => {
     const currentState = message && !state ? "error" : state;
 
     return (
       <div className="flex flex-col gap-1.5 w-fit">
-        <div className="relative flex items-center">
-          {leftIcon && (
-            <div className="absolute left-3 flex items-center justify-center text-neutral-gray-4 pointer-events-none">
-              {leftIcon}
-            </div>
-          )}
-
-          <input
-            ref={ref}
-            className={cn(
-              inputVariants({ state: currentState, className }),
-              leftIcon && "pl-10",
-              rightIcon && "pr-10"
-            )}
-            {...props}
-          />
-
-          {rightIcon && (
-            <div className="absolute right-3 flex items-center justify-center text-neutral-gray-4">
-              {rightIcon}
-            </div>
-          )}
-        </div>
+        <textarea
+          ref={ref}
+          className={cn(textareaVariants({ state: currentState, className }))}
+          {...props}
+        />
 
         {message && (
           <div
@@ -102,6 +73,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = "Input";
+Textarea.displayName = "Textarea";
 
-export { Input };
+export { Textarea };
