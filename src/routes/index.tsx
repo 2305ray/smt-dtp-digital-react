@@ -15,7 +15,7 @@ function HomePage() {
      <InputTest />
      <TextareaPage />
      <SelectTest />
-     <AlertsTest style={""} />
+     <AlertsTest />
     </div>
   );
 }

@@ -10,7 +10,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/popover/popover";
+} from "@/components/ui/popover/popover";
 import {
   Command,
   CommandGroup,
@@ -40,6 +40,10 @@ export function MultiSelect({
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState<string[]>([]);
 
+  const allSelected = selected.length === options.length && options.length > 0;
+  const noneSelected = selected.length === 0;
+  const partiallySelected = !noneSelected && !allSelected;
+
   const toggle = (val: string) => {
     setSelected((prev) =>
       prev.includes(val) ? prev.filter((i) => i !== val) : [...prev, val],
@@ -47,7 +51,7 @@ export function MultiSelect({
   };
 
   const handleSelectAll = () => {
-    if (selected.length === options.length) {
+    if (allSelected) {
       setSelected([]);
     } else {
       setSelected(options.map((o) => o.value));
@@ -55,17 +59,18 @@ export function MultiSelect({
   };
 
   return (
-    <div className="flex flex-col gap-1 w-fit font-sans ">
-      <label className="text-sm font-normal text-black ml-0.5">Label</label>
+    <div className="flex flex-col gap-1 w-fit font-sans">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <button
+            type="button"
             className={cn(
-              "flex h-10 w-[360px] items-center justify-between rounded-md border-2 px-3 py-1 text-sm transition-all outline-none bg-white cursor-pointer",
-              // Borda padrão cinza
+              "flex h-10 w-[360px] items-center justify-between rounded-md border-2 bg-white px-3 py-1 text-sm transition-colors",
+              "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
               "border-neutral-gray-2",
-              // Borda Verde 2px ao abrir ou focar
-              "focus:border-green-500 data-[state=open]:border-green-500 focus:border-3  data-[state=open]:border-3 focus-visible:border-none",
+              "focus:border-green-500 focus-visible:border-green-500 outline-none focus:border-3",
+              "data-[state=open]:border-green-500 data-[state=open]:border-3",
+
               className,
             )}
           >
@@ -98,10 +103,9 @@ export function MultiSelect({
         <PopoverContent
           side="bottom"
           align="start"
-          sideOffset={3}
+          sideOffset={6}
           className={cn(
             "w-[360px] p-0 bg-white border-2 border-neutral-200 rounded-md",
-            // Sombra mais "fininha" e escura (menos blur, mais definição)
             "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.2),0_2px_4px_-1px_rgba(0,0,0,0.1)]",
           )}
         >
@@ -110,31 +114,34 @@ export function MultiSelect({
               <CommandGroup className="p-0">
                 <div className="p-2 border-b border-neutral-100">
                   <CommandItem
+                    onSelect={handleSelectAll}
                     className={cn(
                       "flex items-center gap-3 py-2 px-3 font-bold cursor-pointer rounded-md transition-all",
-                      selected.length === options.length
-                        ? "bg-blue-3 text-white hover:opacity-80 data-[selected='true']:bg-blue-3/90"
-                        : "bg-white text-neutral-700 data-[selected='true']:bg-neutral-100",
+
+                      allSelected
+                        ? "bg-blue-3 text-white hover:opacity-90"
+                        : partiallySelected
+                          ? "bg-blue-3/10 text-blue-3"
+                          : "bg-white text-neutral-700 hover:bg-neutral-100",
                     )}
-                    onSelect={handleSelectAll}
                   >
                     <div
                       className={cn(
-                        "rounded-sm p-0.5",
-                        selected.length === options.length
-                          ? "bg-white"
-                          : "bg-blue-3",
+                        "w-5 h-5 border rounded flex items-center justify-center shrink-0",
+                        allSelected
+                          ? "bg-white border-white"
+                          : partiallySelected
+                            ? "bg-blue-3 border-blue-3"
+                            : "bg-white border-neutral-300",
                       )}
                     >
-                      <Minus
-                        size={14}
-                        className={
-                          selected.length === options.length
-                            ? "text-blue-3"
-                            : "text-white"
-                        }
-                        strokeWidth={4}
-                      />
+                      {allSelected && (
+                        <Check size={14} className="text-blue-3 stroke-[4]" />
+                      )}
+
+                      {partiallySelected && (
+                        <Minus size={14} className="text-white stroke-[4]" />
+                      )}
                     </div>
                     Selecionar todos
                   </CommandItem>
@@ -154,9 +161,10 @@ export function MultiSelect({
                         onSelect={() => toggle(opt.value)}
                         className={cn(
                           "flex items-center gap-4 py-4 px-5 cursor-pointer transition-all",
+
                           isSelected
-                            ? "bg-blue-3 text-white hover:opacity-80 data-[selected='true']:bg-blue-3/90"
-                            : "text-neutral-600 data-[selected='true']:bg-neutral-100",
+                            ? "bg-blue-3 text-white hover:opacity-90"
+                            : "text-neutral-600 hover:bg-neutral-100",
                         )}
                       >
                         <div

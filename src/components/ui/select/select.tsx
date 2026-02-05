@@ -14,14 +14,12 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      // Borda igualada ao MultiSelect (neutral-200) e borda dourada no foco/aberto
       "flex h-10 w-[360px] items-center cursor-pointer justify-between rounded-md border-2 border-neutral-gray-2 bg-white px-3 py-1 text-sm transition-all outline-none focus:outline-none disabled:cursor-not-allowed disabled:opacity-50",
-      "focus:border-green-500 data-[state=open]:border-green-500 focus:border-3  data-[state=open]:border-3 focus-visible:border-none",
+      "focus:border-green-500  focus-visible:border-green-500  data-[state=open]:border-green-500 focus:border-3  data-[state=open]:border-3",
       className,
     )}
     {...props}
   >
-    {/* Estilização do texto e placeholder mais escuro conforme solicitado */}
     <div className="flex items-center gap-2 overflow-hidden text-neutral-600 [&>span]:truncate">
       {children}
     </div>
@@ -64,7 +62,6 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      // Itens com as divisórias cinzas
       "relative flex w-full cursor-pointer select-none items-center py-4 px-5 text-sm outline-none transition-colors border-b border-neutral-100 last:border-0 focus:bg-neutral-100 focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}

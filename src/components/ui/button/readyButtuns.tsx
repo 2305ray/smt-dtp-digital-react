@@ -1,37 +1,29 @@
-
-import { Button } from "@/components/button/buttons";
+import { Button } from "@/components/ui/button/buttons";
 import React from "react";
-
 
 export const SimpleButton = (props: React.ComponentProps<typeof Button>) => (
   <Button className="m-8" {...props} />
 );
 
-
 export const OutlineButton = (props: React.ComponentProps<typeof Button>) => (
   <Button variant="outline" {...props} />
 );
-
 
 export const NoneOutlineButton = (
   props: React.ComponentProps<typeof Button>,
 ) => <Button variant="noneOutline" {...props} />;
 
-
 export const IconDefaultButton = (
   props: React.ComponentProps<typeof Button>,
 ) => <Button icon variant="default" {...props} />;
-
 
 export const IconOutlineButton = (
   props: React.ComponentProps<typeof Button>,
 ) => <Button icon variant="outline" {...props} />;
 
-
 export const IconNoneOutlineButton = (
   props: React.ComponentProps<typeof Button>,
 ) => <Button icon variant="noneOutline" {...props} />;
-
 
 export const CircleLabelButton = (
   props: React.ComponentProps<typeof Button>,
@@ -44,7 +36,6 @@ export const CircleLabelButton = (
     {...props}
   />
 );
-
 
 export const LargeRoundedMediumButton = (
   props: React.ComponentProps<typeof Button>,

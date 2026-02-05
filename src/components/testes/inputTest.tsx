@@ -1,7 +1,6 @@
-import { Input } from "@/components/input/input";
+import { Input } from "@/components/ui/input/input";
 import { CheckCircle2, EyeIcon, User } from "lucide-react";
-import { Checkbox } from "../checkbox/checkbox";
-import { RadioGroup } from "../radioGroup/radioGroup";
+import { Checkbox } from "../ui/checkbox/checkbox";
 
 export function InputTest() {
   return (
@@ -35,8 +34,15 @@ export function InputTest() {
         message="Campo inválido!"
       ></Input>
 
-      <p className="flex gap-1"><Checkbox /> Texto de teste</p>
-      <p className="flex gap-1"><RadioGroup defaultValue=""/> Texto de teste</p>
+      <p className="flex gap-1">
+        <Checkbox /> Texto de teste
+      </p>
+       <p className="flex gap-1">
+        <Checkbox variant="indeterminate"/> Texto de teste
+      </p>
+      <p className="flex gap-1">
+        <Checkbox variant="filled" /> Texto de teste
+      </p>
     </div>
   );
 }

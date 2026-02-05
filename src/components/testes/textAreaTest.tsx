@@ -1,4 +1,4 @@
-import { Textarea as MyTextarea } from "@/components/textarea/textarea"; // Usando um apelido (alias)
+import { Textarea as MyTextarea } from "@/components/ui/textarea/textarea"; 
 import { CheckCircle2 } from "lucide-react";
 
 export function TextareaPage() {

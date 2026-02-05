@@ -8,42 +8,64 @@ import {
   InfoIcon,
 } from "lucide-react";
 
-/* ============================
-   VARIÁVEIS DO DESIGN SYSTEM
-============================ */
 
-// Ícones por tipo
+
 export const ALERT_ICONS = {
-  success: <CheckCircle2Icon size={22}  fill="currentColor" stroke="none"/>,
-  error: <CircleXIcon size={22} />,
-  warning: <AlertTriangleIcon size={22} fill="currentColor" stroke="#FFF5C2"/>,
-  info: <InfoIcon size={22} />,
-  default: null,
+  success: (
+    <CheckCircle2Icon
+      size={22}
+      fill="#168821"
+      stroke="#DCF5E7"
+      strokeWidth={2.0}
+    />
+  ),
+
+  error: (
+    <CircleXIcon
+      size={22}
+      fill="#E52207"
+      stroke="#FDE2E2"
+      strokeWidth={1.9}
+    />
+  ),
+
+  warning: (
+    <AlertTriangleIcon
+      size={22}
+      fill="currentColor"
+      stroke="#FFF5C2"
+      strokeWidth={1.8}
+    />
+  ),
+
+  info: (
+    <InfoIcon
+      size={22}
+      fill="#155BCB"
+      stroke="#DBEAFE"
+      strokeWidth={2.0}
+    />
+  ),
 };
 
-// Classes base
-export const ALERT_BASE =
-  "flex items-start gap-3  px-5 py-3 text-sm shadow-sm transition-colors w-[800px] max-w-[90vw] break-words";
 
-// Variantes de estilo
+export const ALERT_BASE =
+  "flex items-start gap-3  px-5 py-3 text-sm  transition-colors max-w-[800px] max-w-[90vw] break-words";
+
+
 export const alertVariants = cva(ALERT_BASE, {
   variants: {
     state: {
-      default: "bg-neutral-50 text-neutral-gray-4",
-      success: " bg-green-50 text-green-700",
-      error: " bg-red-50 text-red-700",
+      success: " bg-[#E3F5E1]",
+      error: " bg-[#FDE0DB] ",
       warning: " bg-[#FFF5C2]",
-      info: "bg-blue-50 text-blue-700",
+      info: "bg-[#D4E5FF]",
     },
   },
   defaultVariants: {
-    state: "default",
+    state: "info",
   },
 });
-
-/* ============================
-   TYPES
-============================ */
 
 export interface AlertProps
   extends
@@ -53,13 +75,9 @@ export interface AlertProps
   leftIcon?: React.ReactNode;
 }
 
-/* ============================
-   COMPONENT
-============================ */
-
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
   ({ className, state, message, leftIcon, children, ...props }, ref) => {
-    const icon = leftIcon ?? ALERT_ICONS[state ?? "default"];
+    const icon = leftIcon ?? ALERT_ICONS[state ?? "info"];
 
     return (
       <div
@@ -68,14 +86,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         className={cn(alertVariants({ state }), className)}
         {...props}
       >
-        {/* Left Icon */}
         {icon && (
           <div className="shrink-0 flex items-center justify-center">
             {icon}
           </div>
         )}
 
-        {/* Content */}
         <div className="max-w-[640px] mx-auto">{message || children}</div>
       </div>
     );

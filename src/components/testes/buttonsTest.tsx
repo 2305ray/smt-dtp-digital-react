@@ -8,7 +8,7 @@ import {
   CircleLabelButton,
   LargeRoundedMediumButton,
   LargeCustomButton,
-} from "@/components/button/readyButtuns";
+} from "@/components/ui/button/readyButtuns";
 import { HamburgerIcon } from "lucide-react";
 
 export function ButtonsTest() {

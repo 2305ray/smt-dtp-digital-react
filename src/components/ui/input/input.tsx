@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { CircleXIcon } from "lucide-react";
 
 const inputVariants = cva(
-  "flex h-10 w-[360px] rounded-md border-2 bg-transparent pl-4 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-neutral-gray-4",
+  "flex h-10 w-[360px] rounded-md border-2 bg-transparent pl-4 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:border-3 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-neutral-gray-4",
   {
     variants: {
       state: {
         default:
-          "border-neutral-gray-2 text-neutral-gray-4 focus-visible:ring-ring",
+          "border-neutral-gray-2 text-neutral-gray-4 focus-visible:border-green-500 focus:border-green-500",
         error: "border-red-500 focus-visible:ring-red-500",
         success: "border-green-500 focus-visible:ring-green-500",
       },
@@ -17,7 +17,7 @@ const inputVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
 export interface InputProps
@@ -43,7 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       rightIcon,
       ...props
     },
-    ref
+    ref,
   ) => {
     const currentState = message && !state ? "error" : state;
 
@@ -61,7 +61,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               inputVariants({ state: currentState, className }),
               leftIcon && "pl-10",
-              rightIcon && "pr-10"
+              rightIcon && "pr-10",
             )}
             {...props}
           />
@@ -77,7 +77,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <div
             className={cn(
               "flex items-center gap-1.5 bg-red-600 text-white text-[10px] rounded-sm px-2 py-0.5 w-fit ml-0.5 transition-all",
-              messageClassName
+              messageClassName,
             )}
           >
             <div className="shrink-0 flex items-center justify-center">
@@ -99,7 +99,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

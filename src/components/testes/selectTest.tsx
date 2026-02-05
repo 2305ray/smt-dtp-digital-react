@@ -4,10 +4,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/select/select";
+} from "@/components/ui/select/select";
 import { Hamburger } from "lucide-react";
-import { MultiSelect } from "../select/multiSelect";
-import { RadioGroup, RadioGroupItem } from "../radioGroup/radioGroup";
+import { MultiSelect } from "../ui/select/multiSelect";
+import { RadioGroup, RadioGroupItem } from "../ui/radioGroup/radioGroup";
 
 const opcoesFrutas = [
   { value: "maca", label: "Maçã" },
@@ -20,9 +20,6 @@ export default function SelecTest() {
   return (
     <div className="min-h-screen bg-white p-10 flex flex-col items-center gap-12">
       <section className="flex flex-col gap-2">
-        <h2 className="text-sm text-gray-500 font-mono">
-          # MultiSelect (Checkboxes)
-        </h2>
         <MultiSelect
           options={opcoesFrutas}
           placeholder="Escolha várias..."
@@ -32,7 +29,6 @@ export default function SelecTest() {
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-sm text-gray-500 font-mono"># Select Simples</h2>
         <Select>
           <SelectTrigger>
             <SelectValue placeholder="Escolha uma fruta..." />
@@ -55,8 +51,8 @@ export default function SelecTest() {
           <RadioGroupItem value="opcao2" id="r2" />
           <label htmlFor="r2">Opção Azul (Padrão)</label>
 
-           <RadioGroupItem value="opcao3" id="r3" />
-           <label htmlFor="r3">Opção Azul (Padrão)</label>
+          <RadioGroupItem value="opcao3" id="r3" />
+          <label htmlFor="r3">Opção Azul (Padrão)</label>
         </div>
       </RadioGroup>
     </div>

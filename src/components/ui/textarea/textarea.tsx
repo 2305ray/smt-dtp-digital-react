@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { CircleXIcon } from "lucide-react";
 
 const textareaVariants = cva(
-  "flex min-h-[126px] w-[360px] rounded-md border-2 bg-transparent px-3 py-2 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-neutral-gray-4",
+  "flex min-h-[126px] w-[360px] rounded-md border-2 resize-none bg-transparent px-3 py-2 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:border-3 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-neutral-gray-4",
   {
     variants: {
       state: {
         default:
-          "border-neutral-gray-2 text-neutral-gray-4 focus-visible:ring-ring",
+          "border-neutral-gray-2 text-neutral-gray-4 focus-visible:border-green-500 focus:border-green-500 ",
         error: "border-red-500 focus-visible:ring-red-500",
         success: "border-green-500 focus-visible:ring-green-500",
       },
@@ -17,7 +17,7 @@ const textareaVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
 export interface TextareaProps
@@ -32,7 +32,7 @@ export interface TextareaProps
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     { className, state, message, messageClassName, messageIcon, ...props },
-    ref
+    ref,
   ) => {
     const currentState = message && !state ? "error" : state;
 
@@ -48,7 +48,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <div
             className={cn(
               "flex items-center gap-1.5 bg-red-600 text-white text-[10px] rounded-sm px-2 py-0.5 w-fit ml-0.5 transition-all",
-              messageClassName
+              messageClassName,
             )}
           >
             <div className="shrink-0 flex items-center justify-center">
@@ -70,7 +70,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = "Textarea";
