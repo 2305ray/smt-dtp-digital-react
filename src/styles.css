@@ -26,6 +26,7 @@ code {
   --color-primary-300: #2670e8;
   --color-primary-400: #1351b4;
   --color-primary-500: #1351b4;
+  --color-primary-800: #0F2E4B;
 
   /* cores alertas de sucesso */
   --color-success-100: #dbf1d3;
@@ -69,6 +70,7 @@ code {
   --color-blue-3: var(--color-primary-300);
   --color-blue-4: var(--color-primary-400);
   --color-blue-5: var(--color-primary-500);
+--color-blue-8: var(--color-primary-800);
 
   --color-green-1: var(--color-success-100);
   --color-green-2: var(--color-success-200);

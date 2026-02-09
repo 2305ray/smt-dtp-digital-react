@@ -10,33 +10,77 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TesteDeComponentesComponentsTesteRouteImport } from './routes/testeDeComponentes/componentsTeste'
+import { Route as LoginAccessTypeRouteImport } from './routes/Login/accessType'
+import { Route as LoginTermsRouteImport } from './routes/Login/$terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TesteDeComponentesComponentsTesteRoute =
+  TesteDeComponentesComponentsTesteRouteImport.update({
+    id: '/testeDeComponentes/componentsTeste',
+    path: '/testeDeComponentes/componentsTeste',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LoginAccessTypeRoute = LoginAccessTypeRouteImport.update({
+  id: '/Login/accessType',
+  path: '/Login/accessType',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginTermsRoute = LoginTermsRouteImport.update({
+  id: '/Login/$terms',
+  path: '/Login/$terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/Login/$terms': typeof LoginTermsRoute
+  '/Login/accessType': typeof LoginAccessTypeRoute
+  '/testeDeComponentes/componentsTeste': typeof TesteDeComponentesComponentsTesteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/Login/$terms': typeof LoginTermsRoute
+  '/Login/accessType': typeof LoginAccessTypeRoute
+  '/testeDeComponentes/componentsTeste': typeof TesteDeComponentesComponentsTesteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/Login/$terms': typeof LoginTermsRoute
+  '/Login/accessType': typeof LoginAccessTypeRoute
+  '/testeDeComponentes/componentsTeste': typeof TesteDeComponentesComponentsTesteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/Login/$terms'
+    | '/Login/accessType'
+    | '/testeDeComponentes/componentsTeste'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/Login/$terms'
+    | '/Login/accessType'
+    | '/testeDeComponentes/componentsTeste'
+  id:
+    | '__root__'
+    | '/'
+    | '/Login/$terms'
+    | '/Login/accessType'
+    | '/testeDeComponentes/componentsTeste'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginTermsRoute: typeof LoginTermsRoute
+  LoginAccessTypeRoute: typeof LoginAccessTypeRoute
+  TesteDeComponentesComponentsTesteRoute: typeof TesteDeComponentesComponentsTesteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +92,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/testeDeComponentes/componentsTeste': {
+      id: '/testeDeComponentes/componentsTeste'
+      path: '/testeDeComponentes/componentsTeste'
+      fullPath: '/testeDeComponentes/componentsTeste'
+      preLoaderRoute: typeof TesteDeComponentesComponentsTesteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Login/accessType': {
+      id: '/Login/accessType'
+      path: '/Login/accessType'
+      fullPath: '/Login/accessType'
+      preLoaderRoute: typeof LoginAccessTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Login/$terms': {
+      id: '/Login/$terms'
+      path: '/Login/$terms'
+      fullPath: '/Login/$terms'
+      preLoaderRoute: typeof LoginTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginTermsRoute: LoginTermsRoute,
+  LoginAccessTypeRoute: LoginAccessTypeRoute,
+  TesteDeComponentesComponentsTesteRoute:
+    TesteDeComponentesComponentsTesteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

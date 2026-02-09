@@ -13,9 +13,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-2 border border-blue-4 bg-blue-4 hover:opacity-90 text-white",
+        default: "border-2 border border-blue-4 bg-blue-8 hover:opacity-90 text-white",
         outline:
-          "border border-2 border-blue-4 hover:bg-neutral-white-3  text-blue-4 ",
+          "border border-1 border-blue-4 hover:bg-neutral-white-3  text-blue-4 ",
         noneOutline:
           " text-blue-4",
       },
